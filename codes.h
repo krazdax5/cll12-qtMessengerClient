@@ -6,6 +6,7 @@
 #define DELETE 68 //D
 #define ALIVE 65 //A
 #define MESSAGE 77 //M
+#define KICK 75 //K
 #define ERROR 69 //E
 #define SEPARATOR 47 // "/"
 #define USER 85 //U

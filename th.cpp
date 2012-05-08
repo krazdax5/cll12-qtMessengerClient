@@ -1,11 +1,14 @@
 #include "th.h"
 #include <QTcpSocket>
+#include "codes.h"
 
 th::th(QObject *parent, int socketDesc) :
     QThread(parent)
 {
     m_SocketDesc = socketDesc;
     m_connected = true;
+
+    msgBox = new QMessageBox();
 }
 
 void th::run()
@@ -13,19 +16,20 @@ void th::run()
     QTcpSocket socket;
     QByteArray trame;
     QList<QString> liste;
-    QString user = "", message = "";
+    QString user = "", message;
 
     socket.setSocketDescriptor(m_SocketDesc);
 
     while(m_connected)
     {
+        message = "";
         socket.waitForBytesWritten();
         trame = socket.readAll();
         int pos;
 
         switch(trame[0])
         {
-        case ALIVE:
+        case ALIVE: //Trame Alive
             pos = 1;
             while(pos < trame.length())
             {
@@ -45,7 +49,7 @@ void th::run()
             emit(siUpdateList(liste));
 
             break;
-        case MESSAGE:
+        case MESSAGE: //Trame Message
             for(pos = 1; pos < trame.length(); pos++)
             {
                 message += trame[pos]; //Lecture du message
@@ -54,7 +58,13 @@ void th::run()
             emit(siIncommingMessage(message));
 
             break;
-        case ERROR:
+        case ERROR: //Trame Erreur
+            for (pos = 1; pos < trame.length(); pos++)
+            {
+                message += trame[pos]; //Lecture du message d'erreur
+            }
+            msgBox->setText(message);
+            msgBox->show(); //Affichage de l'erreur
             break;
         }
     }
