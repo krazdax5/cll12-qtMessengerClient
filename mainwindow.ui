@@ -142,7 +142,7 @@
      </property>
     </widget>
    </widget>
-   <widget class="QListWidget" name="listMessages">
+   <widget class="QTextEdit" name="lstMessages">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -152,7 +152,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QListWidget" name="listUtilisateurs">
+   <widget class="QListWidget" name="lstUtils">
     <property name="geometry">
      <rect>
       <x>470</x>

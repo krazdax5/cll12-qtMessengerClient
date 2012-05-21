@@ -30,7 +30,7 @@
      <rect>
       <x>40</x>
       <y>80</y>
-      <width>81</width>
+      <width>101</width>
       <height>16</height>
      </rect>
     </property>
@@ -43,7 +43,7 @@
      <rect>
       <x>40</x>
       <y>20</y>
-      <width>101</width>
+      <width>121</width>
       <height>16</height>
      </rect>
     </property>
@@ -71,20 +71,30 @@
      </rect>
     </property>
    </widget>
-   <widget class="QDialogButtonBox" name="btnboxUtilisateur">
+   <widget class="QPushButton" name="btnNewUser">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>160</y>
-      <width>341</width>
-      <height>32</height>
+      <x>30</x>
+      <y>150</y>
+      <width>131</width>
+      <height>41</height>
      </rect>
     </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
+    <property name="text">
+     <string>Nouvel utilisateur</string>
     </property>
-    <property name="standardButtons">
-     <set>QDialogButtonBox::Ok</set>
+   </widget>
+   <widget class="QPushButton" name="btnOK">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>150</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>OK</string>
     </property>
    </widget>
   </widget>
@@ -152,38 +162,5 @@
   </widget>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>btnboxUtilisateur</sender>
-   <signal>accepted()</signal>
-   <receiver>login</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>157</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btnboxUtilisateur</sender>
-   <signal>rejected()</signal>
-   <receiver>login</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>286</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

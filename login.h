@@ -22,18 +22,18 @@ public:
     
 private slots:
     void on_btnboxServeur_accepted();
-
-    void on_btnboxUtilisateur_accepted();
-
     void on_btnAnnuler_clicked();
+    void on_btnNewUser_clicked();
+    void slAccepted();
+
+    void on_btnOK_clicked();
 
 private:
     Ui::login *ui;
-    QMessageBox *m_message;
-    QTcpSocket *m_socket;
 
 signals:
-    void siMainWindow(int, QList<QString>, char);
+    void siTryConn(QString, QString, QString);
+    void siTryNewUserConn(QString, QString, QString);
 };
 
 #endif // LOGIN_H

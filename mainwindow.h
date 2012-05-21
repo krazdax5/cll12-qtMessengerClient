@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMessageBox>
+#include <QTcpSocket>
+#include <QTimer>
 #include "login.h"
 #include "codes.h"
 
@@ -20,19 +23,28 @@ protected:
 
 private:
     Ui::MainWindow *ui;
-
-    QTcpSocket *m_socket;
     QList<QString> m_liste;
-    int m_retour;
+    bool m_nonConnect;
+    QTcpSocket *m_socket;
+    QMessageBox *m_message;
+    QTimer *timer;
+
+    bool Conn();
+    void TryConn(QString, QString, QString, char);
+    void sleep();
 
 private slots:
-    void slMainWindow(int, QList<QString>, char);
-    void slIncommingMessage(QString);
-    void slUpdateList(QList<QString>);
     void on_btnEnvoyer_clicked();
     void on_btnKick_clicked();
     void on_btnCreer_clicked();
     void on_btnSupprimer_clicked();
+    void messageRecu();
+    void slTryConn(QString, QString, QString);
+    void slTryNewUserConn(QString, QString, QString);
+    void slTimer();
+
+signals:
+    void siAccepted();
 };
 
 #endif // MAINWINDOW_H
